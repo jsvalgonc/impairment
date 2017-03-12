@@ -1,0 +1,77 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Parties</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Balancesheetdate</th>
+      <th>Contractportfolio</th>
+      <th>Contractreference</th>
+      <th>Holdingpartyreference</th>
+      <th>Partyreference</th>
+      <th>Partydescription</th>
+      <th>Nif</th>
+      <th>Activitysector</th>
+      <th>Countrycode</th>
+      <th>Sectorialcode</th>
+      <th>Partytype</th>
+      <th>Balcao</th>
+      <th>Zipcode</th>
+      <th>Codigovigilanciaespecial</th>
+      <th>Partygroupreference</th>
+      <th>Totalgroupexposure</th>
+      <th>Totalpartyexposure</th>
+      <th>Bpn overduecredit</th>
+      <th>Bpn returnedcheques</th>
+      <th>Bpn overduecreditother</th>
+      <th>Bpn bdpdefault</th>
+      <th>Bpn overduecreditbpnother</th>
+      <th>Nplteam</th>
+      <th>Nplteamleader</th>
+      <th>Assetmanager</th>
+      <th>Legalmanager</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @parties.each do |party| %>
+      <tr>
+        <td><%= party.BalanceSheetDate %></td>
+        <td><%= party.ContractPortfolio %></td>
+        <td><%= party.ContractReference %></td>
+        <td><%= party.HoldingPartyReference %></td>
+        <td><%= party.PartyReference %></td>
+        <td><%= party.PartyDescription %></td>
+        <td><%= party.NIF %></td>
+        <td><%= party.ActivitySector %></td>
+        <td><%= party.CountryCode %></td>
+        <td><%= party.SectorialCode %></td>
+        <td><%= party.PartyType %></td>
+        <td><%= party.Balcao %></td>
+        <td><%= party.ZipCode %></td>
+        <td><%= party.CodigoVigilanciaEspecial %></td>
+        <td><%= party.PartyGroupReference %></td>
+        <td><%= party.TotalGroupExposure %></td>
+        <td><%= party.TotalPartyExposure %></td>
+        <td><%= party.BPN_OverdueCredit %></td>
+        <td><%= party.BPN_ReturnedCheques %></td>
+        <td><%= party.BPN_OverdueCreditOther %></td>
+        <td><%= party.BPN_BdPDefault %></td>
+        <td><%= party.BPN_OverdueCreditBPNOther %></td>
+        <td><%= party.NPLTeam %></td>
+        <td><%= party.NPLTeamLeader %></td>
+        <td><%= party.AssetManager %></td>
+        <td><%= party.LegalManager %></td>
+        <td><%= link_to 'Show', party %></td>
+        <td><%= link_to 'Edit', edit_party_path(party) %></td>
+        <td><%= link_to 'Destroy', party, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Party', new_party_path %>

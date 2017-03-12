@@ -1,0 +1,121 @@
+<%= form_for(@party) do |f| %>
+  <% if @party.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@party.errors.count, "error") %> prohibited this party from being saved:</h2>
+
+      <ul>
+      <% @party.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :BalanceSheetDate %><br>
+    <%= f.date_select :BalanceSheetDate %>
+  </div>
+  <div class="field">
+    <%= f.label :ContractPortfolio %><br>
+    <%= f.text_field :ContractPortfolio %>
+  </div>
+  <div class="field">
+    <%= f.label :ContractReference %><br>
+    <%= f.text_field :ContractReference %>
+  </div>
+  <div class="field">
+    <%= f.label :HoldingPartyReference %><br>
+    <%= f.text_field :HoldingPartyReference %>
+  </div>
+  <div class="field">
+    <%= f.label :PartyReference %><br>
+    <%= f.text_field :PartyReference %>
+  </div>
+  <div class="field">
+    <%= f.label :PartyDescription %><br>
+    <%= f.text_field :PartyDescription %>
+  </div>
+  <div class="field">
+    <%= f.label :NIF %><br>
+    <%= f.text_field :NIF %>
+  </div>
+  <div class="field">
+    <%= f.label :ActivitySector %><br>
+    <%= f.text_field :ActivitySector %>
+  </div>
+  <div class="field">
+    <%= f.label :CountryCode %><br>
+    <%= f.text_field :CountryCode %>
+  </div>
+  <div class="field">
+    <%= f.label :SectorialCode %><br>
+    <%= f.text_field :SectorialCode %>
+  </div>
+  <div class="field">
+    <%= f.label :PartyType %><br>
+    <%= f.text_field :PartyType %>
+  </div>
+  <div class="field">
+    <%= f.label :Balcao %><br>
+    <%= f.text_field :Balcao %>
+  </div>
+  <div class="field">
+    <%= f.label :ZipCode %><br>
+    <%= f.text_field :ZipCode %>
+  </div>
+  <div class="field">
+    <%= f.label :CodigoVigilanciaEspecial %><br>
+    <%= f.text_field :CodigoVigilanciaEspecial %>
+  </div>
+  <div class="field">
+    <%= f.label :PartyGroupReference %><br>
+    <%= f.text_field :PartyGroupReference %>
+  </div>
+  <div class="field">
+    <%= f.label :TotalGroupExposure %><br>
+    <%= f.text_field :TotalGroupExposure %>
+  </div>
+  <div class="field">
+    <%= f.label :TotalPartyExposure %><br>
+    <%= f.text_field :TotalPartyExposure %>
+  </div>
+  <div class="field">
+    <%= f.label :BPN_OverdueCredit %><br>
+    <%= f.text_field :BPN_OverdueCredit %>
+  </div>
+  <div class="field">
+    <%= f.label :BPN_ReturnedCheques %><br>
+    <%= f.text_field :BPN_ReturnedCheques %>
+  </div>
+  <div class="field">
+    <%= f.label :BPN_OverdueCreditOther %><br>
+    <%= f.text_field :BPN_OverdueCreditOther %>
+  </div>
+  <div class="field">
+    <%= f.label :BPN_BdPDefault %><br>
+    <%= f.text_field :BPN_BdPDefault %>
+  </div>
+  <div class="field">
+    <%= f.label :BPN_OverdueCreditBPNOther %><br>
+    <%= f.text_field :BPN_OverdueCreditBPNOther %>
+  </div>
+  <div class="field">
+    <%= f.label :NPLTeam %><br>
+    <%= f.text_field :NPLTeam %>
+  </div>
+  <div class="field">
+    <%= f.label :NPLTeamLeader %><br>
+    <%= f.text_field :NPLTeamLeader %>
+  </div>
+  <div class="field">
+    <%= f.label :AssetManager %><br>
+    <%= f.text_field :AssetManager %>
+  </div>
+  <div class="field">
+    <%= f.label :LegalManager %><br>
+    <%= f.text_field :LegalManager %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

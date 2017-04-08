@@ -5,4 +5,6 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-months = Month.create([{status: 1 , month: Time.new(2016,1,1) }])
+company = Company.create([{"CompanyCode": "TESTE", "Description": "Empresa de Teste" ,"CompanyStatus": 1}])
+months1 = Month.create([{aasm_state: :inicio , month: Time.new(2016,1,1), company: company[0], import_parties_status: 0, import_loans_status: 0, import_mitigants_status: 0}])
+#endq

@@ -1,0 +1,73 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Aparties</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Balancesheetdate</th>
+      <th>Holdingpartyreference</th>
+      <th>Partyreference</th>
+      <th>Partydescription</th>
+      <th>Nif</th>
+      <th>Activitysector</th>
+      <th>Countrycode</th>
+      <th>Sectorialcode</th>
+      <th>Partytype</th>
+      <th>Balcao</th>
+      <th>Zipcode</th>
+      <th>Codigovigilanciaespecial</th>
+      <th>Partygroupreference</th>
+      <th>Totalgroupexposure</th>
+      <th>Totalpartyexposure</th>
+      <th>Bpn overduecredit</th>
+      <th>Bpn returnedcheques</th>
+      <th>Bpn overduecreditother</th>
+      <th>Bpn bdpdefault</th>
+      <th>Bpn overduecreditbpnother</th>
+      <th>Nplteam</th>
+      <th>Nplteamleader</th>
+      <th>Assetmanager</th>
+      <th>Legalmanager</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @aparties.each do |aparty| %>
+      <tr>
+        <td><%= aparty.BalanceSheetDate %></td>
+        <td><%= aparty.HoldingPartyReference %></td>
+        <td><%= aparty.PartyReference %></td>
+        <td><%= aparty.PartyDescription %></td>
+        <td><%= aparty.NIF %></td>
+        <td><%= aparty.ActivitySector %></td>
+        <td><%= aparty.CountryCode %></td>
+        <td><%= aparty.SectorialCode %></td>
+        <td><%= aparty.PartyType %></td>
+        <td><%= aparty.Balcao %></td>
+        <td><%= aparty.ZipCode %></td>
+        <td><%= aparty.CodigoVigilanciaEspecial %></td>
+        <td><%= aparty.PartyGroupReference %></td>
+        <td><%= aparty.TotalGroupExposure %></td>
+        <td><%= aparty.TotalPartyExposure %></td>
+        <td><%= aparty.BPN_OverdueCredit %></td>
+        <td><%= aparty.BPN_ReturnedCheques %></td>
+        <td><%= aparty.BPN_OverdueCreditOther %></td>
+        <td><%= aparty.BPN_BdPDefault %></td>
+        <td><%= aparty.BPN_OverdueCreditBPNOther %></td>
+        <td><%= aparty.NPLTeam %></td>
+        <td><%= aparty.NPLTeamLeader %></td>
+        <td><%= aparty.AssetManager %></td>
+        <td><%= aparty.LegalManager %></td>
+        <td><%= link_to 'Show', aparty %></td>
+        <td><%= link_to 'Edit', edit_aparty_path(aparty) %></td>
+        <td><%= link_to 'Destroy', aparty, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Aparty', new_aparty_path %>

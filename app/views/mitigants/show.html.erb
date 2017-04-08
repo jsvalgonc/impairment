@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Balancesheetdate:</strong>
+  <%= @mitigant.BalanceSheetDate %>
+</p>
+
+<p>
+  <strong>Holdingpartyreference:</strong>
+  <%= @mitigant.HoldingPartyReference %>
+</p>
+
+<p>
+  <strong>Contractreference:</strong>
+  <%= @mitigant.ContractReference %>
+</p>
+
+<p>
+  <strong>Mitigantreference:</strong>
+  <%= @mitigant.MitigantReference %>
+</p>
+
+<p>
+  <strong>Mitigantbalance:</strong>
+  <%= @mitigant.MitigantBalance %>
+</p>
+
+<p>
+  <strong>Mitiganttype:</strong>
+  <%= @mitigant.MitigantType %>
+</p>
+
+<p>
+  <strong>Componente:</strong>
+  <%= @mitigant.Componente %>
+</p>
+
+<%= link_to 'Edit', edit_mitigant_path(@mitigant) %> |
+<%= link_to 'Back', mitigants_path %>

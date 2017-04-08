@@ -1,0 +1,41 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Amitigants</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Balancesheetdate</th>
+      <th>Holdingpartyreference</th>
+      <th>Contractreference</th>
+      <th>Mitigantreference</th>
+      <th>Mitigantbalance</th>
+      <th>Mitiganttype</th>
+      <th>Componente</th>
+      <th>Acontract</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @amitigants.each do |amitigant| %>
+      <tr>
+        <td><%= amitigant.BalanceSheetDate %></td>
+        <td><%= amitigant.HoldingPartyReference %></td>
+        <td><%= amitigant.ContractReference %></td>
+        <td><%= amitigant.MitigantReference %></td>
+        <td><%= amitigant.MitigantBalance %></td>
+        <td><%= amitigant.MitigantType %></td>
+        <td><%= amitigant.Componente %></td>
+        <td><%= amitigant.acontract %></td>
+        <td><%= link_to 'Show', amitigant %></td>
+        <td><%= link_to 'Edit', edit_amitigant_path(amitigant) %></td>
+        <td><%= link_to 'Destroy', amitigant, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Amitigant', new_amitigant_path %>

@@ -19,6 +19,14 @@
     <%= f.label :status %><br>
     <%= f.number_field :status %>
   </div>
+  <div class="field">
+    <%= f.label :company_id %><br>
+    <%= f.number_field :company_id %>
+  </div>
+  <div class="field">
+    <%= f.label :aasm_state %><br>
+    <%= f.text_field :aasm_state %>
+  </div>
   <div class="actions">
     <%= f.submit %>
   </div>

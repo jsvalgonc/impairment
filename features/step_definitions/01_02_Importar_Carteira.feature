@@ -6,26 +6,33 @@ Feature: 01.02 - Importar Carteira
   And press the import button
 
 Scenario: Import Parties
+  Given there is a future Month
   Given I am authenticated as a Process Manager
+  #Given there is a present Month
   When I go to the "Period Management" page
-  When In line "20017-01-01" I press "Importar Parties"
-  When fill in "ficheiro" with "D:\Trabalho\BPN\II\FicheirosImportar\Parties_M201409I_PV_PAR.txt"
-  When I press "OK"
-  Then I should see "Ficheiro Importado com sucesso"
+  When In line "20017-01-01" I press "Importar" file "parties"
+  When I choose file "test/files/Parties_test.txt"
+  When I press "Importar"
+  Then I should see "Ficheiros de Contrapartes Importado"
 
 Scenario: Import Contracts
+  Given there is a future Month
   Given I am authenticated as a Process Manager
-  When I go to the "Period Management" page
-  When In line "20017-01-01" I press "Importar Contracts"
-  When fill in "ficheiro" with "D:\Trabalho\BPN\II\FicheirosImportar\Contracts_M201409I_PV_CNT.txt"
-  When I press "OK"
-  Then I should see "Ficheiro Importado com sucesso"
+  #Given there is a present Month
+  When I go to the "Period Management" page 
+  When In line "2016-01-01" I press "Importar" file "loans"
+  When I choose file "test/files/Contracts_test.txt"
+  When I press "Importar"
+  Then I should see "Ficheiros de Contratos Importado"
 
-Scenario: Import Mitigants 
+
+Scenario: Import Mitigants
+  Given there is a future Month
   Given I am authenticated as a Process Manager
+  #Given there is a present Month
   When I go to the "Period Management" page
-  When In line "20017-01-01" I press "Importar Mitigants"
-  When fill in "ficheiro" with "D:\Trabalho\BPN\II\FicheirosImportar\MCJ_M201409I_PV_MCJ.txt"
-  When I press "OK"
-  Then I should see "Ficheiro Importado com sucesso"
+  When In line "20017-01-01" I press "Importar" file "mitigants"
+  When I choose file "test/files/Mitigants_test.txt"
+  When I press "Importar"
+  Then I should see "Ficheiros de Mitigantes Importado"
   

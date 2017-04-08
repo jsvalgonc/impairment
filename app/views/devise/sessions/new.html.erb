@@ -17,6 +17,15 @@
       <%= f.label :remember_me %>
     </div>
   <% end -%>
+  
+  <div class="field" id="Empresa"> 
+    <%= f.label :Empresa %><br />
+    <%= collection_select(:user ,:company_id, Company.all, :id, :Description, prompt: true) %> 
+  </div>
+  <div class="field"> 
+    <%= f.label :Mes %><br />
+    <%= collection_select(:user ,:month_id, Month.all, :id, :month, prompt: true) %> 
+  </div>
 
   <div class="actions">
     <%= f.submit "Log in" %>

@@ -2,6 +2,8 @@ module NavigationHelpers
   def path_to(page_name)
     case page_name
     when /Period Management/ then '/months'
+    when /Rules Management/ then '/rulesiis'
+    when /Process Management/ then '/months/fase' 
     else
       begin
         page_name =~ /the (.*) page/

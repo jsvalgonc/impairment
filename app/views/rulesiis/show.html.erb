@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Empresa:</strong>
+  <%= @company.Description %>
+</p>
+
+<p>
+  <strong>Number:</strong>
+  <%= @rulesii.number %>
+</p>
+
+<p>
+  <strong>Priority:</strong>
+  <%= @rulesii.priority %>
+</p>
+
+<p>
+  <strong>Ruletype:</strong>
+  <%= @rulesii.RuleType %>
+</p>
+
+<p>
+  <strong>Rule:</strong>
+  <%= @rulesii.rule %>
+</p>
+
+<%= link_to 'Edit', edit_rulesii_path(@rulesii) %> |
+<%= link_to 'Back', rulesiis_path %>

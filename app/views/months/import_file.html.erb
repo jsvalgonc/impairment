@@ -1,8 +1,4 @@
 <h2>Importar Ficheiro</h2>
-date 
-<%= params[:id] %>
-   type
-<%= params[:type] %>
 <%= form_tag import_file_parties_path, multipart: true do %>
   <%= file_field_tag :file %>
   <%= submit_tag "Importar" %>

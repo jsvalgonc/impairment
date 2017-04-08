@@ -11,10 +11,215 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170310232726) do
+ActiveRecord::Schema.define(version: 20170404204116) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "acontracts", force: :cascade do |t|
+    t.date     "BalanceSheetDate"
+    t.string   "ContractPortfolio"
+    t.string   "ContractReference"
+    t.string   "HoldingPartyReference"
+    t.string   "BPN_Balcao"
+    t.string   "PartyReference"
+    t.string   "Classe"
+    t.string   "ProductClass"
+    t.string   "ProductComponent"
+    t.string   "AccountNature"
+    t.string   "AccountType"
+    t.date     "OriginDate"
+    t.date     "MaturityDate"
+    t.date     "IrrecoverableDate"
+    t.string   "Currency"
+    t.decimal  "Balance"
+    t.decimal  "DrawnAmount"
+    t.decimal  "UndrawnAmount"
+    t.decimal  "Principal"
+    t.decimal  "AccruedInterestAtBSD"
+    t.decimal  "LossClass"
+    t.decimal  "TaxaNominal"
+    t.decimal  "TIR"
+    t.string   "TipoCredito"
+    t.string   "TipoGarantia"
+    t.string   "TipoCliente"
+    t.string   "CurrentDelay"
+    t.string   "ISMitigant"
+    t.decimal  "BPN_PercentagemCartao"
+    t.decimal  "BPN_Val_Fee"
+    t.string   "IsMortgage"
+    t.decimal  "BPN_Val1_CapVin"
+    t.decimal  "BPN_Val2_CapVen"
+    t.decimal  "BPN_Val3_CapAbt"
+    t.decimal  "BPN_Val5_JrsVen"
+    t.decimal  "BPN_Val6_JrsAnl"
+    t.decimal  "BPN_Val7_PrvRGC"
+    t.decimal  "BPN_Val8_PrvEco"
+    t.decimal  "BPN_Val9_PrvCrV"
+    t.decimal  "BPN_Val10_PrvCCD"
+    t.decimal  "BPN_Val11_PrvRP"
+    t.decimal  "BPN_Val13_GarPre"
+    t.string   "BPN_AccRef1"
+    t.string   "BPN_AccRef2"
+    t.string   "BPN_AccRef3"
+    t.string   "BPN_AccRef4_AccruedInterestAtBSD"
+    t.string   "BPN_AccRef5"
+    t.string   "BPN_AccRef6"
+    t.string   "BPN_AccRef7"
+    t.string   "BPN_AccRef8"
+    t.string   "BPN_AccRef9"
+    t.string   "BPN_AccRef10"
+    t.string   "BPN_AccRef11"
+    t.string   "BPN_AccRef12_UndrawnAmount"
+    t.string   "BPN_AccRef13"
+    t.integer  "party_id"
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
+    t.integer  "aparty_id"
+    t.integer  "AIISelected"
+    t.integer  "company_id"
+    t.integer  "month_id"
+    t.integer  "aiiselected"
+  end
+
+  add_index "acontracts", ["BalanceSheetDate", "HoldingPartyReference", "ContractReference", "ContractPortfolio"], name: "index_acontracts_primary_key", using: :btree
+  add_index "acontracts", ["aparty_id"], name: "index_acontracts_on_aparty_id", using: :btree
+  add_index "acontracts", ["company_id"], name: "index_acontracts_on_company_id", using: :btree
+  add_index "acontracts", ["month_id"], name: "index_acontracts_on_month_id", using: :btree
+  add_index "acontracts", ["party_id"], name: "index_acontracts_on_party_id", using: :btree
+
+  create_table "amitigants", force: :cascade do |t|
+    t.date     "BalanceSheetDate"
+    t.string   "HoldingPartyReference"
+    t.string   "ContractReference"
+    t.string   "MitigantReference"
+    t.decimal  "MitigantBalance"
+    t.string   "MitigantType"
+    t.string   "Componente"
+    t.integer  "acontract_id"
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
+  end
+
+  add_index "amitigants", ["BalanceSheetDate", "HoldingPartyReference", "ContractReference", "MitigantReference"], name: "index_amitigants_primary_key", using: :btree
+  add_index "amitigants", ["acontract_id"], name: "index_amitigants_on_acontract_id", using: :btree
+
+  create_table "aparties", force: :cascade do |t|
+    t.date     "BalanceSheetDate"
+    t.string   "HoldingPartyReference"
+    t.string   "PartyReference"
+    t.string   "PartyDescription"
+    t.string   "NIF"
+    t.string   "ActivitySector"
+    t.string   "CountryCode"
+    t.string   "SectorialCode"
+    t.string   "PartyType"
+    t.string   "Balcao"
+    t.string   "ZipCode"
+    t.string   "CodigoVigilanciaEspecial"
+    t.string   "PartyGroupReference"
+    t.decimal  "TotalGroupExposure"
+    t.decimal  "TotalPartyExposure"
+    t.decimal  "BPN_OverdueCredit"
+    t.decimal  "BPN_ReturnedCheques"
+    t.decimal  "BPN_OverdueCreditOther"
+    t.decimal  "BPN_BdPDefault"
+    t.decimal  "BPN_OverdueCreditBPNOther"
+    t.string   "NPLTeam"
+    t.string   "NPLTeamLeader"
+    t.string   "AssetManager"
+    t.string   "LegalManager"
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+  end
+
+  add_index "aparties", ["BalanceSheetDate", "HoldingPartyReference", "PartyReference"], name: "index_aparties_primary_key", using: :btree
+
+  create_table "companies", force: :cascade do |t|
+    t.string   "CompanyCode"
+    t.string   "Description"
+    t.integer  "CompanyStatus"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  create_table "contracts", force: :cascade do |t|
+    t.date     "BalanceSheetDate"
+    t.string   "ContractPortfolio"
+    t.string   "ContractReference"
+    t.string   "HoldingPartyReference"
+    t.string   "BPN_Balcao"
+    t.string   "PartyReference"
+    t.string   "Classe"
+    t.string   "ProductClass"
+    t.string   "ProductComponent"
+    t.string   "AccountNature"
+    t.string   "AccountType"
+    t.date     "OriginDate"
+    t.date     "MaturityDate"
+    t.date     "IrrecoverableDate"
+    t.string   "Currency"
+    t.decimal  "Balance"
+    t.decimal  "DrawnAmount"
+    t.decimal  "UndrawnAmount"
+    t.decimal  "Principal"
+    t.decimal  "AccruedInterestAtBSD"
+    t.decimal  "LossClass"
+    t.decimal  "TaxaNominal"
+    t.decimal  "TIR"
+    t.string   "TipoCredito"
+    t.string   "TipoGarantia"
+    t.string   "TipoCliente"
+    t.string   "CurrentDelay"
+    t.string   "ISMitigant"
+    t.decimal  "BPN_PercentagemCartao"
+    t.decimal  "BPN_Val_Fee"
+    t.string   "IsMortgage"
+    t.decimal  "BPN_Val1_CapVin"
+    t.decimal  "BPN_Val2_CapVen"
+    t.decimal  "BPN_Val3_CapAbt"
+    t.decimal  "BPN_Val5_JrsVen"
+    t.decimal  "BPN_Val6_JrsAnl"
+    t.decimal  "BPN_Val7_PrvRGC"
+    t.decimal  "BPN_Val8_PrvEco"
+    t.decimal  "BPN_Val9_PrvCrV"
+    t.decimal  "BPN_Val10_PrvCCD"
+    t.decimal  "BPN_Val11_PrvRP"
+    t.decimal  "BPN_Val13_GarPre"
+    t.string   "BPN_AccRef1"
+    t.string   "BPN_AccRef2"
+    t.string   "BPN_AccRef3"
+    t.string   "BPN_AccRef4_AccruedInterestAtBSD"
+    t.string   "BPN_AccRef5"
+    t.string   "BPN_AccRef6"
+    t.string   "BPN_AccRef7"
+    t.string   "BPN_AccRef8"
+    t.string   "BPN_AccRef9"
+    t.string   "BPN_AccRef10"
+    t.string   "BPN_AccRef11"
+    t.string   "BPN_AccRef12_UndrawnAmount"
+    t.string   "BPN_AccRef13"
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
+    t.integer  "party_id"
+  end
+
+  add_index "contracts", ["BalanceSheetDate", "HoldingPartyReference", "ContractReference", "ContractPortfolio"], name: "index_contracts_primary_key", using: :btree
+  add_index "contracts", ["party_id"], name: "index_contracts_on_party_id", using: :btree
+
+  create_table "mitigants", force: :cascade do |t|
+    t.date     "BalanceSheetDate"
+    t.string   "HoldingPartyReference"
+    t.string   "ContractReference"
+    t.string   "MitigantReference"
+    t.decimal  "MitigantBalance"
+    t.string   "MitigantType"
+    t.string   "Componente"
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
+  end
+
+  add_index "mitigants", ["BalanceSheetDate", "HoldingPartyReference", "ContractReference", "MitigantReference"], name: "index_mitigants_primary_key", using: :btree
 
   create_table "models", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -35,14 +240,17 @@ ActiveRecord::Schema.define(version: 20170310232726) do
   add_index "models", ["reset_password_token"], name: "index_models_on_reset_password_token", unique: true, using: :btree
 
   create_table "months", force: :cascade do |t|
-    t.integer  "status"
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
     t.date     "month"
     t.integer  "import_parties_status"
     t.integer  "import_loans_status"
     t.integer  "import_mitigants_status"
+    t.string   "aasm_state"
+    t.integer  "company_id"
   end
+
+  add_index "months", ["company_id"], name: "index_months_on_company_id", using: :btree
 
   create_table "parties", force: :cascade do |t|
     t.date     "BalanceSheetDate"
@@ -75,6 +283,20 @@ ActiveRecord::Schema.define(version: 20170310232726) do
     t.datetime "updated_at",                null: false
   end
 
+  add_index "parties", ["BalanceSheetDate", "HoldingPartyReference", "PartyReference"], name: "index_parties_primary_key", using: :btree
+
+  create_table "rulesiis", force: :cascade do |t|
+    t.decimal  "number"
+    t.decimal  "priority"
+    t.string   "RuleType"
+    t.string   "rule"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "company_id"
+  end
+
+  add_index "rulesiis", ["company_id"], name: "index_rulesiis_on_company_id", using: :btree
+
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
@@ -89,9 +311,23 @@ ActiveRecord::Schema.define(version: 20170310232726) do
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
     t.integer  "role"
+    t.integer  "company_id"
+    t.integer  "month_id"
   end
 
+  add_index "users", ["company_id"], name: "index_users_on_company_id", using: :btree
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["month_id"], name: "index_users_on_month_id", using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "acontracts", "aparties"
+  add_foreign_key "acontracts", "companies"
+  add_foreign_key "acontracts", "months"
+  add_foreign_key "acontracts", "parties"
+  add_foreign_key "amitigants", "acontracts"
+  add_foreign_key "contracts", "parties"
+  add_foreign_key "months", "companies"
+  add_foreign_key "rulesiis", "companies"
+  add_foreign_key "users", "companies"
+  add_foreign_key "users", "months"
 end

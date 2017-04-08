@@ -1,0 +1,33 @@
+<%= form_for(@rulesii) do |f| %>
+  <% if @rulesii.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@rulesii.errors.count, "error") %> prohibited this rulesii from being saved:</h2>
+
+      <ul>
+      <% @rulesii.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    Numero<br>
+    <%= f.text_field :number %>
+  </div>
+  <div class="field">
+    Prioridade<br>
+    <%= f.text_field :priority %>
+  </div>
+  <div class="field">
+    Tipo de Regra<br>
+    <%= f.text_field :RuleType %>
+  </div>
+  <div class="field">
+    Regra<br>
+    <%= f.text_field :rule %>
+  </div>
+  <div class="actions">
+    <%= f.submit 'Criar' %>
+  </div>
+<% end %>

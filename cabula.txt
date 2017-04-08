@@ -32,12 +32,13 @@ gera um ficheiro no directorio db
 Actualizar Tabela (ou qualquer coisa na base de dados)
 bundle exec rake db:migrate 
 bundle exec rake db:test:prepare (actualizar teste/cucumber)
+rake db:seed RAILS_ENV=test --trace (criar registo iniciais no ambiente de testes)
 
 rake db:test:clone - sicronizar bases de dados
 
 Acrescentar um campo : rails generate migration AddReceitumIdToReceitaIngredientes  receitum_id:integer 
 
-Criar uma tabela de ligação: rails generate scaffold IngredientsRecipes recipe:references ingredient:reference
+Criar uma tabela de ligação: rails generate scaffold IngredientsRecipes recipe:references ingredient:references
 
 Apaga um campo: rails generate migration RemoveFieldNameFromTableName field_name:datatype
 
@@ -82,8 +83,9 @@ no C9
 
 user:jsvalgonc@hotmail.com
 password:portugues e mumero
+criar repositorio no site do github (https://github.com/jsvalgonc/impairment)
 
-criar git- git init
+criar git- git init 
 criar remote - git remote add pd4mealplanner https://github.com/jsvalgonc/PD4.git
 
 
@@ -158,3 +160,4 @@ http://codepen.io/chriscoyier/pen/egHEK (tag)
 --------------------autenticação e roles------------------------------------------
 https://github.com/RailsApps/rails-devise-roles
 https://github.com/RailsApps/rails3-devise-rspec-cucumber/blob/master/features/step_definitions/user_steps.rb
+-----------------a ler----------------------------------------

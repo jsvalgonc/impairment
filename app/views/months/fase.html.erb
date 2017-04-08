@@ -1,0 +1,28 @@
+<%= form_for(@month) do |f| %>
+  <% if @month.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@month.errors.count, "error") %> prohibited this month from being saved:</h2>
+
+      <ul>
+      <% @month.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="field">
+    <%= f.label :month %><br>
+    <%= @month.month %>
+  </div>
+  <div class="field">
+    <%= f.label :aasm_state %><br>
+    <%= @month.aasm_state %>
+  </div>
+  <div class="field">
+    <%= f.label :empresa %><br>
+    <%=  @company.Description %>
+  </div>
+<% end %>
+  <%= button_to 'Novo Mês', months_path %>
+  <%= button_to 'Proxima Fase', proxima_fase_path(@month) %>
+

@@ -1,0 +1,2 @@
+json.extract! aparty, :id, :BalanceSheetDate, :HoldingPartyReference, :PartyReference, :PartyDescription, :NIF, :ActivitySector, :CountryCode, :SectorialCode, :PartyType, :Balcao, :ZipCode, :CodigoVigilanciaEspecial, :PartyGroupReference, :TotalGroupExposure, :TotalPartyExposure, :BPN_OverdueCredit, :BPN_ReturnedCheques, :BPN_OverdueCreditOther, :BPN_BdPDefault, :BPN_OverdueCreditBPNOther, :NPLTeam, :NPLTeamLeader, :AssetManager, :LegalManager, :created_at, :updated_at
+json.url aparty_url(aparty, format: :json)

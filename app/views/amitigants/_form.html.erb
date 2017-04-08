@@ -1,0 +1,49 @@
+<%= form_for(@amitigant) do |f| %>
+  <% if @amitigant.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@amitigant.errors.count, "error") %> prohibited this amitigant from being saved:</h2>
+
+      <ul>
+      <% @amitigant.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :BalanceSheetDate %><br>
+    <%= f.date_select :BalanceSheetDate %>
+  </div>
+  <div class="field">
+    <%= f.label :HoldingPartyReference %><br>
+    <%= f.text_field :HoldingPartyReference %>
+  </div>
+  <div class="field">
+    <%= f.label :ContractReference %><br>
+    <%= f.text_field :ContractReference %>
+  </div>
+  <div class="field">
+    <%= f.label :MitigantReference %><br>
+    <%= f.text_field :MitigantReference %>
+  </div>
+  <div class="field">
+    <%= f.label :MitigantBalance %><br>
+    <%= f.text_field :MitigantBalance %>
+  </div>
+  <div class="field">
+    <%= f.label :MitigantType %><br>
+    <%= f.text_field :MitigantType %>
+  </div>
+  <div class="field">
+    <%= f.label :Componente %><br>
+    <%= f.text_field :Componente %>
+  </div>
+  <div class="field">
+    <%= f.label :acontract_id %><br>
+    <%= f.text_field :acontract_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,38 @@
+
+<h1>Gestão de Regras</h1>
+<p>
+  <strong>Empresa:</strong>
+  <%= @company.Description %>
+</p>
+
+<table class="table_standard">
+  <thead>
+    <tr>
+      <th>Numero</th>
+      <th>Prioridade</th>
+      <th>Tipo</th>
+      <th>Regra</th>
+      <th colspan="5"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @rulesiis.each do |rulesii| %>
+      <tr>
+        <td><%= rulesii.number %></td>
+        <td><%= rulesii.priority %></td>
+        <td><%= rulesii.RuleType %></td>
+        <td><%= rulesii.rule %></td>
+        <td><%= link_to 'Validar', validar_regra_path(rulesii), :remote => true %></td>
+        <td><%= link_to 'Mostrar', rulesii %></td>
+        <td><%= link_to 'Editar', edit_rulesii_path(rulesii) %></td>
+        <td><%= link_to 'Apagar', rulesii, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Criar Nova Regra', new_rulesii_path %>
+

@@ -1,21 +1,37 @@
 Rails.application.routes.draw do
+  resources :companies
+  resources :amitigants
+  resources :amitigants
+  resources :acontracts
+  resources :acontracts
+  resources :aparties
+  resources :amitigants
+  resources :acontracts
+  resources :contracts
+  resources :rulesiis
+  resources :mitigants
+  resources :contracts
   resources :parties
   get 'home/index'
 
   devise_for :users
   devise_for :models
   root to: "home#index"
+  get 'months/fase' => 'months#fase', as: :fase
+  post 'months/proxima_fase' => 'months#proxima_fase', as: :proxima_fase
   resources :months do
     collection { post :import_month }
   end  
+  
   
   #get 'months/:date/import_parties' => 'months#import_parties', as: :import_parties
   get 'months/:id/import_loans' => 'months#import_loans', as: :import_loans
   get 'months/:id/import_mitigants' => 'months#import_mitigants', as: :import_mitigants
   get 'months/:id/:type/import_parties' => 'months#import_parties', as: :import_parties
-  
   get 'months/:id/:type/import_file'  => 'months#import_file', as: :import_file
   post 'months/:id/:type/import_file'  => 'months#import', as: :import_file_parties
+  
+  get 'rulesiis/:id/validar' => 'rulesiis#validar', as: :validar_regra
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

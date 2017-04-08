@@ -1,0 +1,237 @@
+<%= form_for(@contract) do |f| %>
+  <% if @contract.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@contract.errors.count, "error") %> prohibited this contract from being saved:</h2>
+
+      <ul>
+      <% @contract.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :BalanceSheetDate %><br>
+    <%= f.date_select :BalanceSheetDate %>
+  </div>
+  <div class="field">
+    <%= f.label :ContractPortfolio %><br>
+    <%= f.text_field :ContractPortfolio %>
+  </div>
+  <div class="field">
+    <%= f.label :ContractReference %><br>
+    <%= f.text_field :ContractReference %>
+  </div>
+  <div class="field">
+    <%= f.label :HoldingPartyReference %><br>
+    <%= f.text_field :HoldingPartyReference %>
+  </div>
+  <div class="field">
+    <%= f.label :BPN_Balcao %><br>
+    <%= f.text_field :BPN_Balcao %>
+  </div>
+  <div class="field">
+    <%= f.label :PartyReference %><br>
+    <%= f.text_field :PartyReference %>
+  </div>
+  <div class="field">
+    <%= f.label :Classe %><br>
+    <%= f.text_field :Classe %>
+  </div>
+  <div class="field">
+    <%= f.label :ProductClass %><br>
+    <%= f.text_field :ProductClass %>
+  </div>
+  <div class="field">
+    <%= f.label :ProductComponent %><br>
+    <%= f.text_field :ProductComponent %>
+  </div>
+  <div class="field">
+    <%= f.label :AccountNature %><br>
+    <%= f.text_field :AccountNature %>
+  </div>
+  <div class="field">
+    <%= f.label :AccountType %><br>
+    <%= f.text_field :AccountType %>
+  </div>
+  <div class="field">
+    <%= f.label :OriginDate %><br>
+    <%= f.date_select :OriginDate %>
+  </div>
+  <div class="field">
+    <%= f.label :MaturityDate %><br>
+    <%= f.date_select :MaturityDate %>
+  </div>
+  <div class="field">
+    <%= f.label :IrrecoverableDate %><br>
+    <%= f.date_select :IrrecoverableDate %>
+  </div>
+  <div class="field">
+    <%= f.label :Currency %><br>
+    <%= f.text_field :Currency %>
+  </div>
+  <div class="field">
+    <%= f.label :Balance %><br>
+    <%= f.text_field :Balance %>
+  </div>
+  <div class="field">
+    <%= f.label :DrawnAmount %><br>
+    <%= f.text_field :DrawnAmount %>
+  </div>
+  <div class="field">
+    <%= f.label :UndrawnAmount %><br>
+    <%= f.text_field :UndrawnAmount %>
+  </div>
+  <div class="field">
+    <%= f.label :Principal %><br>
+    <%= f.text_field :Principal %>
+  </div>
+  <div class="field">
+    <%= f.label :AccruedInterestAtBSD %><br>
+    <%= f.text_field :AccruedInterestAtBSD %>
+  </div>
+  <div class="field">
+    <%= f.label :LossClass %><br>
+    <%= f.text_field :LossClass %>
+  </div>
+  <div class="field">
+    <%= f.label :TaxaNominal %><br>
+    <%= f.text_field :TaxaNominal %>
+  </div>
+  <div class="field">
+    <%= f.label :TIR %><br>
+    <%= f.text_field :TIR %>
+  </div>
+  <div class="field">
+    <%= f.label :TipoCredito %><br>
+    <%= f.text_field :TipoCredito %>
+  </div>
+  <div class="field">
+    <%= f.label :TipoGarantia %><br>
+    <%= f.text_field :TipoGarantia %>
+  </div>
+  <div class="field">
+    <%= f.label :TipoCliente %><br>
+    <%= f.text_field :TipoCliente %>
+  </div>
+  <div class="field">
+    <%= f.label :CurrentDelay %><br>
+    <%= f.text_field :CurrentDelay %>
+  </div>
+  <div class="field">
+    <%= f.label :ISMitigant %><br>
+    <%= f.text_field :ISMitigant %>
+  </div>
+  <div class="field">
+    <%= f.label :BPN_PercentagemCartao %><br>
+    <%= f.text_field :BPN_PercentagemCartao %>
+  </div>
+  <div class="field">
+    <%= f.label :BPN_Val_Fee %><br>
+    <%= f.text_field :BPN_Val_Fee %>
+  </div>
+  <div class="field">
+    <%= f.label :IsMortgage %><br>
+    <%= f.text_field :IsMortgage %>
+  </div>
+  <div class="field">
+    <%= f.label :BPN_Val1_CapVin %><br>
+    <%= f.text_field :BPN_Val1_CapVin %>
+  </div>
+  <div class="field">
+    <%= f.label :BPN_Val2_CapVen %><br>
+    <%= f.text_field :BPN_Val2_CapVen %>
+  </div>
+  <div class="field">
+    <%= f.label :BPN_Val3_CapAbt %><br>
+    <%= f.text_field :BPN_Val3_CapAbt %>
+  </div>
+  <div class="field">
+    <%= f.label :BPN_Val5_JrsVen %><br>
+    <%= f.text_field :BPN_Val5_JrsVen %>
+  </div>
+  <div class="field">
+    <%= f.label :BPN_Val6_JrsAnl %><br>
+    <%= f.text_field :BPN_Val6_JrsAnl %>
+  </div>
+  <div class="field">
+    <%= f.label :BPN_Val7_PrvRGC %><br>
+    <%= f.text_field :BPN_Val7_PrvRGC %>
+  </div>
+  <div class="field">
+    <%= f.label :BPN_Val8_PrvEco %><br>
+    <%= f.text_field :BPN_Val8_PrvEco %>
+  </div>
+  <div class="field">
+    <%= f.label :BPN_Val9_PrvCrV %><br>
+    <%= f.text_field :BPN_Val9_PrvCrV %>
+  </div>
+  <div class="field">
+    <%= f.label :BPN_Val10_PrvCCD %><br>
+    <%= f.text_field :BPN_Val10_PrvCCD %>
+  </div>
+  <div class="field">
+    <%= f.label :BPN_Val11_PrvRP %><br>
+    <%= f.text_field :BPN_Val11_PrvRP %>
+  </div>
+  <div class="field">
+    <%= f.label :BPN_Val13_GarPre %><br>
+    <%= f.text_field :BPN_Val13_GarPre %>
+  </div>
+  <div class="field">
+    <%= f.label :BPN_AccRef1 %><br>
+    <%= f.text_field :BPN_AccRef1 %>
+  </div>
+  <div class="field">
+    <%= f.label :BPN_AccRef2 %><br>
+    <%= f.text_field :BPN_AccRef2 %>
+  </div>
+  <div class="field">
+    <%= f.label :BPN_AccRef3 %><br>
+    <%= f.text_field :BPN_AccRef3 %>
+  </div>
+  <div class="field">
+    <%= f.label :BPN_AccRef4_AccruedInterestAtBSD %><br>
+    <%= f.text_field :BPN_AccRef4_AccruedInterestAtBSD %>
+  </div>
+  <div class="field">
+    <%= f.label :BPN_AccRef5 %><br>
+    <%= f.text_field :BPN_AccRef5 %>
+  </div>
+  <div class="field">
+    <%= f.label :BPN_AccRef6 %><br>
+    <%= f.text_field :BPN_AccRef6 %>
+  </div>
+  <div class="field">
+    <%= f.label :BPN_AccRef7 %><br>
+    <%= f.text_field :BPN_AccRef7 %>
+  </div>
+  <div class="field">
+    <%= f.label :BPN_AccRef8 %><br>
+    <%= f.text_field :BPN_AccRef8 %>
+  </div>
+  <div class="field">
+    <%= f.label :BPN_AccRef9 %><br>
+    <%= f.text_field :BPN_AccRef9 %>
+  </div>
+  <div class="field">
+    <%= f.label :BPN_AccRef10 %><br>
+    <%= f.text_field :BPN_AccRef10 %>
+  </div>
+  <div class="field">
+    <%= f.label :BPN_AccRef11 %><br>
+    <%= f.text_field :BPN_AccRef11 %>
+  </div>
+  <div class="field">
+    <%= f.label :BPN_AccRef12_UndrawnAmount %><br>
+    <%= f.text_field :BPN_AccRef12_UndrawnAmount %>
+  </div>
+  <div class="field">
+    <%= f.label :BPN_AccRef13 %><br>
+    <%= f.text_field :BPN_AccRef13 %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

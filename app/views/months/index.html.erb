@@ -1,4 +1,5 @@
 <p id="notice"><%= notice %></p>
+Empresa <%= @company.Description %>
 
 <h1>Gerir Periodos</h1>
 
@@ -7,13 +8,14 @@
   <thead>
     <tr>
       <th style="min-width:100px">Month</th>
-      <th>Status</th>
       <th>Importar Contrapartes</th>
       <th>Status Contrapartes</th>
       <th>Importar Carteira</th>
       <th>Status Carteira</th>
       <th>Importar Mitigantes</th>
       <th>Status Mitigantes</th>
+      <th>Fase Processo</th>
+      <th style="min-width:100px">Proxima Fase</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -21,13 +23,14 @@
     <% @months.order(month: :desc).each do |month| %>
       <tr>
         <td><%= month.month %></td>
-        <td><%= month.status %></td>
         <td><%= link_to 'Importar', import_file_path(month,'parties'), 'data-popup'=> true %></td>
         <td><%= month.import_parties_status %></td>
-        <td><%= link_to 'Importar', import_file_path(month,'loans'), 'data-popup' => true %></td>
+        <td><%= link_to 'Importar', import_file_path(month,'contracts'), 'data-popup' => true %></td>
         <td><%= month.import_loans_status %></td>
-        <td><%= link_to 'Importar', import_file_path(month,'mitigans'), 'data-popup' => true %></td>
+        <td><%= link_to 'Importar', import_file_path(month,'mitigants'), 'data-popup' => true %></td>
         <td><%= month.import_mitigants_status %></td>
+        <td><%= month.aasm_state  %></td>
+        <td><%= link_to 'Proxima Fase', proxima_fase_path(month), :remote => true %></td>
         <td><%= link_to 'Mostrar', month %></td>
         <td><%= link_to 'Editar', edit_month_path(month) %></td>
         <td><%= link_to 'Apagar', month, method: :delete, data: { confirm: 'Tem a certeza?' } %></td>

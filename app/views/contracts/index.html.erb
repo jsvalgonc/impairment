@@ -1,0 +1,135 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Contracts</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Balancesheetdate</th>
+      <th>Contractportfolio</th>
+      <th>Contractreference</th>
+      <th>Holdingpartyreference</th>
+      <th>Bpn balcao</th>
+      <th>Partyreference</th>
+      <th>Classe</th>
+      <th>Productclass</th>
+      <th>Productcomponent</th>
+      <th>Accountnature</th>
+      <th>Accounttype</th>
+      <th>Origindate</th>
+      <th>Maturitydate</th>
+      <th>Irrecoverabledate</th>
+      <th>Currency</th>
+      <th>Balance</th>
+      <th>Drawnamount</th>
+      <th>Undrawnamount</th>
+      <th>Principal</th>
+      <th>Accruedinterestatbsd</th>
+      <th>Lossclass</th>
+      <th>Taxanominal</th>
+      <th>Tir</th>
+      <th>Tipocredito</th>
+      <th>Tipogarantia</th>
+      <th>Tipocliente</th>
+      <th>Currentdelay</th>
+      <th>Ismitigant</th>
+      <th>Bpn percentagemcartao</th>
+      <th>Bpn val fee</th>
+      <th>Ismortgage</th>
+      <th>Bpn val1 capvin</th>
+      <th>Bpn val2 capven</th>
+      <th>Bpn val3 capabt</th>
+      <th>Bpn val5 jrsven</th>
+      <th>Bpn val6 jrsanl</th>
+      <th>Bpn val7 prvrgc</th>
+      <th>Bpn val8 prveco</th>
+      <th>Bpn val9 prvcrv</th>
+      <th>Bpn val10 prvccd</th>
+      <th>Bpn val11 prvrp</th>
+      <th>Bpn val13 garpre</th>
+      <th>Bpn accref1</th>
+      <th>Bpn accref2</th>
+      <th>Bpn accref3</th>
+      <th>Bpn accref4 accruedinterestatbsd</th>
+      <th>Bpn accref5</th>
+      <th>Bpn accref6</th>
+      <th>Bpn accref7</th>
+      <th>Bpn accref8</th>
+      <th>Bpn accref9</th>
+      <th>Bpn accref10</th>
+      <th>Bpn accref11</th>
+      <th>Bpn accref12 undrawnamount</th>
+      <th>Bpn accref13</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @contracts.each do |contract| %>
+      <tr>
+        <td><%= contract.BalanceSheetDate %></td>
+        <td><%= contract.ContractPortfolio %></td>
+        <td><%= contract.ContractReference %></td>
+        <td><%= contract.HoldingPartyReference %></td>
+        <td><%= contract.BPN_Balcao %></td>
+        <td><%= contract.PartyReference %></td>
+        <td><%= contract.Classe %></td>
+        <td><%= contract.ProductClass %></td>
+        <td><%= contract.ProductComponent %></td>
+        <td><%= contract.AccountNature %></td>
+        <td><%= contract.AccountType %></td>
+        <td><%= contract.OriginDate %></td>
+        <td><%= contract.MaturityDate %></td>
+        <td><%= contract.IrrecoverableDate %></td>
+        <td><%= contract.Currency %></td>
+        <td><%= contract.Balance %></td>
+        <td><%= contract.DrawnAmount %></td>
+        <td><%= contract.UndrawnAmount %></td>
+        <td><%= contract.Principal %></td>
+        <td><%= contract.AccruedInterestAtBSD %></td>
+        <td><%= contract.LossClass %></td>
+        <td><%= contract.TaxaNominal %></td>
+        <td><%= contract.TIR %></td>
+        <td><%= contract.TipoCredito %></td>
+        <td><%= contract.TipoGarantia %></td>
+        <td><%= contract.TipoCliente %></td>
+        <td><%= contract.CurrentDelay %></td>
+        <td><%= contract.ISMitigant %></td>
+        <td><%= contract.BPN_PercentagemCartao %></td>
+        <td><%= contract.BPN_Val_Fee %></td>
+        <td><%= contract.IsMortgage %></td>
+        <td><%= contract.BPN_Val1_CapVin %></td>
+        <td><%= contract.BPN_Val2_CapVen %></td>
+        <td><%= contract.BPN_Val3_CapAbt %></td>
+        <td><%= contract.BPN_Val5_JrsVen %></td>
+        <td><%= contract.BPN_Val6_JrsAnl %></td>
+        <td><%= contract.BPN_Val7_PrvRGC %></td>
+        <td><%= contract.BPN_Val8_PrvEco %></td>
+        <td><%= contract.BPN_Val9_PrvCrV %></td>
+        <td><%= contract.BPN_Val10_PrvCCD %></td>
+        <td><%= contract.BPN_Val11_PrvRP %></td>
+        <td><%= contract.BPN_Val13_GarPre %></td>
+        <td><%= contract.BPN_AccRef1 %></td>
+        <td><%= contract.BPN_AccRef2 %></td>
+        <td><%= contract.BPN_AccRef3 %></td>
+        <td><%= contract.BPN_AccRef4_AccruedInterestAtBSD %></td>
+        <td><%= contract.BPN_AccRef5 %></td>
+        <td><%= contract.BPN_AccRef6 %></td>
+        <td><%= contract.BPN_AccRef7 %></td>
+        <td><%= contract.BPN_AccRef8 %></td>
+        <td><%= contract.BPN_AccRef9 %></td>
+        <td><%= contract.BPN_AccRef10 %></td>
+        <td><%= contract.BPN_AccRef11 %></td>
+        <td><%= contract.BPN_AccRef12_UndrawnAmount %></td>
+        <td><%= contract.BPN_AccRef13 %></td>
+        <td><%= link_to 'Show', contract %></td>
+        <td><%= link_to 'Edit', edit_contract_path(contract) %></td>
+        <td><%= link_to 'Destroy', contract, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Contract', new_contract_path %>

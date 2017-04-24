@@ -1,9 +1,9 @@
 FactoryGirl.define do
   factory :month do
     month Time.new(2016,1,1)
-    import_parties_status 1
-    import_loans_status 1
-    import_mitigants_status 1
+    import_parties_status 0
+    import_loans_status 0
+    import_mitigants_status 0
     aasm_state :inicio
     company
   end

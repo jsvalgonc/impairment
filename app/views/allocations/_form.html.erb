@@ -1,0 +1,38 @@
+<%= form_for(@allocation) do |f| %>
+  <% if @allocation.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@allocation.errors.count, "error") %> prohibited this allocation from being saved:</h2>
+
+      <ul>
+      <% @allocation.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :number %><br>
+    <%= f.text_field :number %>
+  </div>
+  <div class="field">
+    <%= f.label :priority %><br>
+    <%= f.text_field :priority %>
+  </div>
+  <div class="field">
+    <%= f.label :ruleTipe %><br>
+    <%= f.text_field :ruleTipe %>
+  </div>
+  <div class="field">
+    <%= f.label :balcao %><br>
+    <%= f.text_field :balcao %>
+  </div>
+  <div class="field">
+    <%= f.label :grupo_analise_id %><br>
+    <%= f.select :grupo_analise, GrupoAnalise.all.map { |u| [u.title, u.id] }, { :prompt => "Please Select" } %>
+     <%= f.text_field :grupo_analise_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit "Criar" %>
+  </div>
+<% end %>

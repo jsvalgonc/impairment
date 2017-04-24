@@ -1,16 +1,14 @@
 Rails.application.routes.draw do
+  resources :allocations
+  resources :grupo_analises
   resources :companies
   resources :amitigants
-  resources :amitigants
   resources :acontracts
-  resources :acontracts
+  get 'aparties/index_AI_AC' => 'aparties#index_AI_AC'
   resources :aparties
-  resources :amitigants
-  resources :acontracts
   resources :contracts
   resources :rulesiis
   resources :mitigants
-  resources :contracts
   resources :parties
   get 'home/index'
 

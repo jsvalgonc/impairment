@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170404204116) do
+ActiveRecord::Schema.define(version: 20170422225821) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -88,6 +88,18 @@ ActiveRecord::Schema.define(version: 20170404204116) do
   add_index "acontracts", ["month_id"], name: "index_acontracts_on_month_id", using: :btree
   add_index "acontracts", ["party_id"], name: "index_acontracts_on_party_id", using: :btree
 
+  create_table "allocations", force: :cascade do |t|
+    t.decimal  "number"
+    t.decimal  "priority"
+    t.string   "ruleTipe"
+    t.string   "balcao"
+    t.integer  "grupo_analise_id"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
+
+  add_index "allocations", ["grupo_analise_id"], name: "index_allocations_on_grupo_analise_id", using: :btree
+
   create_table "amitigants", force: :cascade do |t|
     t.date     "BalanceSheetDate"
     t.string   "HoldingPartyReference"
@@ -99,6 +111,8 @@ ActiveRecord::Schema.define(version: 20170404204116) do
     t.integer  "acontract_id"
     t.datetime "created_at",            null: false
     t.datetime "updated_at",            null: false
+    t.integer  "month_id"
+    t.integer  "company_id"
   end
 
   add_index "amitigants", ["BalanceSheetDate", "HoldingPartyReference", "ContractReference", "MitigantReference"], name: "index_amitigants_primary_key", using: :btree
@@ -129,11 +143,19 @@ ActiveRecord::Schema.define(version: 20170404204116) do
     t.string   "NPLTeamLeader"
     t.string   "AssetManager"
     t.string   "LegalManager"
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
+    t.string   "aasm_state"
+    t.integer  "AISelected",                default: 0
+    t.integer  "company_id"
+    t.integer  "month_id"
+    t.integer  "grupo_analise_id"
   end
 
   add_index "aparties", ["BalanceSheetDate", "HoldingPartyReference", "PartyReference"], name: "index_aparties_primary_key", using: :btree
+  add_index "aparties", ["company_id"], name: "index_aparties_on_company_id", using: :btree
+  add_index "aparties", ["grupo_analise_id"], name: "index_aparties_on_grupo_analise_id", using: :btree
+  add_index "aparties", ["month_id"], name: "index_aparties_on_month_id", using: :btree
 
   create_table "companies", force: :cascade do |t|
     t.string   "CompanyCode"
@@ -206,6 +228,16 @@ ActiveRecord::Schema.define(version: 20170404204116) do
 
   add_index "contracts", ["BalanceSheetDate", "HoldingPartyReference", "ContractReference", "ContractPortfolio"], name: "index_contracts_primary_key", using: :btree
   add_index "contracts", ["party_id"], name: "index_contracts_on_party_id", using: :btree
+
+  create_table "grupo_analises", force: :cascade do |t|
+    t.string   "title"
+    t.text     "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.integer  "user_id"
+  end
+
+  add_index "grupo_analises", ["user_id"], name: "index_grupo_analises_on_user_id", using: :btree
 
   create_table "mitigants", force: :cascade do |t|
     t.date     "BalanceSheetDate"
@@ -324,8 +356,13 @@ ActiveRecord::Schema.define(version: 20170404204116) do
   add_foreign_key "acontracts", "companies"
   add_foreign_key "acontracts", "months"
   add_foreign_key "acontracts", "parties"
+  add_foreign_key "allocations", "grupo_analises"
   add_foreign_key "amitigants", "acontracts"
+  add_foreign_key "aparties", "companies"
+  add_foreign_key "aparties", "grupo_analises"
+  add_foreign_key "aparties", "months"
   add_foreign_key "contracts", "parties"
+  add_foreign_key "grupo_analises", "users"
   add_foreign_key "months", "companies"
   add_foreign_key "rulesiis", "companies"
   add_foreign_key "users", "companies"

@@ -1,43 +1,52 @@
   -- Insere os contractos na tabela de analise e apaga a tabela de importacao
-    CREATE OR REPLACE FUNCTION insert_contracts() 
+  --select insert_contracts();
+    CREATE OR REPLACE FUNCTION insert_contracts(month_id integer,company_id integer) 
     RETURNS void AS $$
     BEGIN
-      insert  into Acontracts ("id","BalanceSheetDate","ContractPortfolio","ContractReference","HoldingPartyReference","BPN_Balcao","PartyReference","Classe","ProductClass","ProductComponent","AccountNature","AccountType","OriginDate","MaturityDate","IrrecoverableDate","Currency","Balance","DrawnAmount","UndrawnAmount","Principal","AccruedInterestAtBSD","LossClass","TaxaNominal","TIR","TipoCredito","TipoGarantia","TipoCliente","CurrentDelay","ISMitigant","BPN_PercentagemCartao","BPN_Val_Fee","IsMortgage","BPN_Val1_CapVin","BPN_Val2_CapVen","BPN_Val3_CapAbt","BPN_Val5_JrsVen","BPN_Val6_JrsAnl","BPN_Val7_PrvRGC","BPN_Val8_PrvEco","BPN_Val9_PrvCrV","BPN_Val10_PrvCCD","BPN_Val11_PrvRP","BPN_Val13_GarPre","BPN_AccRef1","BPN_AccRef2","BPN_AccRef3","BPN_AccRef4_AccruedInterestAtBSD","BPN_AccRef5","BPN_AccRef6","BPN_AccRef7","BPN_AccRef8","BPN_AccRef9","BPN_AccRef10","BPN_AccRef11","BPN_AccRef12_UndrawnAmount","BPN_AccRef13","created_at","updated_at") select "id","BalanceSheetDate","ContractPortfolio","ContractReference","HoldingPartyReference","BPN_Balcao","PartyReference","Classe","ProductClass","ProductComponent","AccountNature","AccountType","OriginDate","MaturityDate","IrrecoverableDate","Currency","Balance","DrawnAmount","UndrawnAmount","Principal","AccruedInterestAtBSD","LossClass","TaxaNominal","TIR","TipoCredito","TipoGarantia","TipoCliente","CurrentDelay","ISMitigant","BPN_PercentagemCartao","BPN_Val_Fee","IsMortgage","BPN_Val1_CapVin","BPN_Val2_CapVen","BPN_Val3_CapAbt","BPN_Val5_JrsVen","BPN_Val6_JrsAnl","BPN_Val7_PrvRGC","BPN_Val8_PrvEco","BPN_Val9_PrvCrV","BPN_Val10_PrvCCD","BPN_Val11_PrvRP","BPN_Val13_GarPre","BPN_AccRef1","BPN_AccRef2","BPN_AccRef3","BPN_AccRef4_AccruedInterestAtBSD","BPN_AccRef5","BPN_AccRef6","BPN_AccRef7","BPN_AccRef8","BPN_AccRef9","BPN_AccRef10","BPN_AccRef11","BPN_AccRef12_UndrawnAmount","BPN_AccRef13","created_at","updated_at" from contracts; 
+      insert  into Acontracts ("id","BalanceSheetDate","ContractPortfolio","ContractReference","HoldingPartyReference","BPN_Balcao","PartyReference","Classe","ProductClass","ProductComponent","AccountNature","AccountType","OriginDate","MaturityDate","IrrecoverableDate","Currency","Balance","DrawnAmount","UndrawnAmount","Principal","AccruedInterestAtBSD","LossClass","TaxaNominal","TIR","TipoCredito","TipoGarantia","TipoCliente","CurrentDelay","ISMitigant","BPN_PercentagemCartao","BPN_Val_Fee","IsMortgage","BPN_Val1_CapVin","BPN_Val2_CapVen","BPN_Val3_CapAbt","BPN_Val5_JrsVen","BPN_Val6_JrsAnl","BPN_Val7_PrvRGC","BPN_Val8_PrvEco","BPN_Val9_PrvCrV","BPN_Val10_PrvCCD","BPN_Val11_PrvRP","BPN_Val13_GarPre","BPN_AccRef1","BPN_AccRef2","BPN_AccRef3","BPN_AccRef4_AccruedInterestAtBSD","BPN_AccRef5","BPN_AccRef6","BPN_AccRef7","BPN_AccRef8","BPN_AccRef9","BPN_AccRef10","BPN_AccRef11","BPN_AccRef12_UndrawnAmount","BPN_AccRef13","created_at","updated_at","month_id","company_id") select "id","BalanceSheetDate","ContractPortfolio","ContractReference","HoldingPartyReference","BPN_Balcao","PartyReference","Classe","ProductClass","ProductComponent","AccountNature","AccountType","OriginDate","MaturityDate","IrrecoverableDate","Currency","Balance","DrawnAmount","UndrawnAmount","Principal","AccruedInterestAtBSD","LossClass","TaxaNominal","TIR","TipoCredito","TipoGarantia","TipoCliente","CurrentDelay","ISMitigant","BPN_PercentagemCartao","BPN_Val_Fee","IsMortgage","BPN_Val1_CapVin","BPN_Val2_CapVen","BPN_Val3_CapAbt","BPN_Val5_JrsVen","BPN_Val6_JrsAnl","BPN_Val7_PrvRGC","BPN_Val8_PrvEco","BPN_Val9_PrvCrV","BPN_Val10_PrvCCD","BPN_Val11_PrvRP","BPN_Val13_GarPre","BPN_AccRef1","BPN_AccRef2","BPN_AccRef3","BPN_AccRef4_AccruedInterestAtBSD","BPN_AccRef5","BPN_AccRef6","BPN_AccRef7","BPN_AccRef8","BPN_AccRef9","BPN_AccRef10","BPN_AccRef11","BPN_AccRef12_UndrawnAmount","BPN_AccRef13","created_at","updated_at",month_id,company_id   from contracts; 
       delete from Contracts;
     END;
     $$ LANGUAGE plpgsql;
-_____________________________________________________________
 
-select insert_contracts();
-
-_____________________________________________________________
 
   -- Insere os contractos na tabela de mitigants e apaga a tabela de importacao
-    CREATE OR REPLACE FUNCTION insert_mitigants() 
+  --select insert_mitigants();
+    CREATE OR REPLACE FUNCTION insert_mitigants(month_id integer,company_id integer) 
     RETURNS void AS $$
     BEGIN
-      insert into Amitigants ("BalanceSheetDate","HoldingPartyReference","ContractReference","MitigantReference","MitigantBalance","MitigantType","Componente","created_at","updated_at") select "BalanceSheetDate","HoldingPartyReference","ContractReference","MitigantReference","MitigantBalance","MitigantType","Componente","created_at","updated_at" from mitigants;
+      insert into Amitigants ("BalanceSheetDate","HoldingPartyReference","ContractReference","MitigantReference","MitigantBalance","MitigantType","Componente","created_at","updated_at","month_id","company_id") select "BalanceSheetDate","HoldingPartyReference","ContractReference","MitigantReference","MitigantBalance","MitigantType","Componente","created_at","updated_at",month_id,company_id from mitigants;
       delete from mitigants;
     END;
     $$ LANGUAGE plpgsql;
-_____________________________________________________________
-
-select insert_mitigants();
-
-_______________________________________________________________
-
+    
   -- Insere os contractos na tabela de parties e apaga a tabela de importacao
-    CREATE OR REPLACE FUNCTION insert_parties() 
+  --select insert_parties();
+    CREATE OR REPLACE FUNCTION insert_parties(month_id integer,company_id integer) 
     RETURNS void AS $$
     BEGIN
-    insert into aparties ( "BalanceSheetDate","HoldingPartyReference","PartyReference","PartyDescription","NIF","ActivitySector","CountryCode","SectorialCode","PartyType","Balcao","ZipCode","CodigoVigilanciaEspecial","PartyGroupReference","TotalGroupExposure","TotalPartyExposure","BPN_OverdueCredit","BPN_ReturnedCheques","BPN_OverdueCreditOther","BPN_BdPDefault","BPN_OverdueCreditBPNOther","NPLTeam","NPLTeamLeader","AssetManager","LegalManager","created_at","updated_at") select DISTINCT ON ("BalanceSheetDate","HoldingPartyReference","PartyReference") "BalanceSheetDate","HoldingPartyReference","PartyReference","PartyDescription","NIF","ActivitySector","CountryCode","SectorialCode","PartyType","Balcao","ZipCode","CodigoVigilanciaEspecial","PartyGroupReference","TotalGroupExposure","TotalPartyExposure","BPN_OverdueCredit","BPN_ReturnedCheques","BPN_OverdueCreditOther","BPN_BdPDefault","BPN_OverdueCreditBPNOther","NPLTeam","NPLTeamLeader","AssetManager","LegalManager","created_at","updated_at" from Parties;+| 
+    insert into aparties ( "BalanceSheetDate","HoldingPartyReference","PartyReference","PartyDescription","NIF","ActivitySector","CountryCode","SectorialCode","PartyType","Balcao","ZipCode","CodigoVigilanciaEspecial","PartyGroupReference","TotalGroupExposure","TotalPartyExposure","BPN_OverdueCredit","BPN_ReturnedCheques","BPN_OverdueCreditOther","BPN_BdPDefault","BPN_OverdueCreditBPNOther","NPLTeam","NPLTeamLeader","AssetManager","LegalManager","created_at","updated_at","company_id","month_id") select DISTINCT ON ("BalanceSheetDate","HoldingPartyReference","PartyReference","company_id","month_id") "BalanceSheetDate","HoldingPartyReference","PartyReference","PartyDescription","NIF","ActivitySector","CountryCode","SectorialCode","PartyType","Balcao","ZipCode","CodigoVigilanciaEspecial","PartyGroupReference","TotalGroupExposure","TotalPartyExposure","BPN_OverdueCredit","BPN_ReturnedCheques","BPN_OverdueCreditOther","BPN_BdPDefault","BPN_OverdueCreditBPNOther","NPLTeam","NPLTeamLeader","AssetManager","LegalManager","created_at","updated_at",company_id,month_id from Parties;
     delete from parties;
     END;
     $$ LANGUAGE plpgsql;
+
+  -- Actualiza os Grupos de Análise
+  --select * from update_aparties_grupos_analise();
+    CREATE OR REPLACE FUNCTION update_aparties_grupos_analise()
+    RETURNS void AS $$
+    BEGIN
+    update aparties set "grupo_analise_id"=allocations.grupo_analise_id from allocations  where allocations."balcao"=aparties."Balcao";
+    END;
+    $$ LANGUAGE plpgsql;        
     
 _____________________________________________________________
 
-select insert_parties();
+
+
+
+
+
+
+
 _______________________________________________________________
 
 select B."BalanceSheetDate", B."HoldingPartyReference", B."PartyReference",B."ContractReference", A.id  from Contracts B, Parties A where A."BalanceSheetDate"=B."BalanceSheetDate" AND A."HoldingPartyReference"=B."HoldingPartyReference" AND  A."PartyReference"=B."PartyReference";  
@@ -47,3 +56,13 @@ Update Acontracts B set AParty_id=A.id from Aparties A where A."BalanceSheetDate
 Update Acontracts B set Aparty_id=A.id from Aparties A where A."BalanceSheetDate"=B."BalanceSheetDate" AND A."HoldingPartyReference"=B."HoldingPartyReference" AND  A."PartyReference"=B."PartyReference"; 
 
 Update Amitigants B set Acontract_id=A.id from AContracts A  where A."BalanceSheetDate"=B."BalanceSheetDate" AND A."HoldingPartyReference"=B."HoldingPartyReference" AND  A."ContractReference"=B."ContractReference";  
+
+______________________________________________________
+
+    CREATE OR REPLACE FUNCTION insert_parties(month_id integer,company_id integer) 
+    RETURNS void AS $$
+    BEGIN
+    insert into aparties ( "BalanceSheetDate","HoldingPartyReference","PartyReference","PartyDescription","NIF","ActivitySector","CountryCode","SectorialCode","PartyType","Balcao","ZipCode","CodigoVigilanciaEspecial","PartyGroupReference","TotalGroupExposure","TotalPartyExposure","BPN_OverdueCredit","BPN_ReturnedCheques","BPN_OverdueCreditOther","BPN_BdPDefault","BPN_OverdueCreditBPNOther","NPLTeam","NPLTeamLeader","AssetManager","LegalManager","created_at","updated_at","company_id","month_id") select DISTINCT ON ("BalanceSheetDate","HoldingPartyReference","PartyReference","company_id","month_id") "BalanceSheetDate","HoldingPartyReference","PartyReference","PartyDescription","NIF","ActivitySector","CountryCode","SectorialCode","PartyType","Balcao","ZipCode","CodigoVigilanciaEspecial","PartyGroupReference","TotalGroupExposure","TotalPartyExposure","BPN_OverdueCredit","BPN_ReturnedCheques","BPN_OverdueCreditOther","BPN_BdPDefault","BPN_OverdueCreditBPNOther","NPLTeam","NPLTeamLeader","AssetManager","LegalManager","created_at","updated_at",company_id,month_id from Parties;
+    delete from parties;
+    END;
+    $$ LANGUAGE plpgsql;

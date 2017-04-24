@@ -1,0 +1,79 @@
+<p id="notice"><%= notice %></p>
+<p></p>
+<h1>Clientes</h1>
+<h2>Análise Individual</h2>
+<table>
+  <thead>
+    <tr>
+      <th>Entidade</th>
+      <th>Referencia</th>
+      <th>Balcao</th>
+      <th colspan="4"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @aparties.where('"AISelected"=1').each do |aparty| %>      
+      <tr>
+        <td><%= aparty.PartyDescription %></td>
+        <td><%= aparty.PartyReference %></td>
+        <td><%= aparty.Balcao %></td>
+        <td><%= aparty.aasm_state %></td>
+        <td><%= link_to 'Show', aparty %></td>
+        <td><%= link_to 'Edit', edit_aparty_path(aparty) %></td>
+        <td><%= link_to 'Destroy', aparty, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<h2>Análise Colectiva</h2>
+<table>
+  <thead>
+    <tr>
+      <th>Entidade</th>
+      <th>Referencia</th>
+      <th>Balcao</th>
+      <th colspan="4"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @aparties.where('"AISelected"=2').each do |aparty| %>      
+      <tr>
+        <td><%= aparty.PartyDescription %></td>
+        <td><%= aparty.PartyReference %></td>
+        <td><%= aparty.Balcao %></td>
+        <td><%= aparty.aasm_state %></td>
+        <td><%= link_to 'Show', aparty %></td>
+        <td><%= link_to 'Edit', edit_aparty_path(aparty) %></td>
+        <td><%= link_to 'Destroy', aparty, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<h2>Não Dividido em Análise Individual e Colectiva</h2>
+<table>
+  <thead>
+    <tr>
+      <th>Entidade</th>
+      <th>Referencia</th>
+      <th>Balcao</th>
+      <th colspan="4"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @aparties.where('"AISelected"=0').each do |aparty| %>      
+      <tr>
+        <td><%= aparty.PartyDescription %></td>
+        <td><%= aparty.PartyReference %></td>
+        <td><%= aparty.Balcao %></td>
+        <td><%= aparty.aasm_state %></td>
+        <td><%= link_to 'Show', aparty %></td>
+        <td><%= link_to 'Edit', edit_aparty_path(aparty) %></td>
+        <td><%= link_to 'Destroy', aparty, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<br>
+

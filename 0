@@ -1,0 +1,2 @@
+      invoke  active_record
+      create    db/migrate/20170409175948_add_ai_selected_to_aparties.rb

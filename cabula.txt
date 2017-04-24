@@ -58,12 +58,13 @@ bundle exec rake db:schema:dump
 Reconstruir base de dados de teste
 bundle exec rake db:schema:load RAILS_ENV=test -t
 
-Postgres
+--------------------Postgres--------------
 iniciar serviço
 sudo service postgresql start
 sudo sudo -u postgres psql
 \c connect => \c d2umu6sglfnpee (Heroku)
 \dt - tabelas
+\df . store procedures (functions)
 \l - bases de dados
 \q - sair
 
@@ -91,7 +92,7 @@ criar remote - git remote add pd4mealplanner https://github.com/jsvalgonc/PD4.gi
 
 adicionar ficheiros - git add --all (-f)
 commit - git commit -m 'added new files' (colocar o nome da versão)
-push - git push pd4mealplanner/peer_to_peer master
+push - git push https://github.com/jsvalgonc/pd4mealplanner.git (ou /peer_to_peer.git) master
 
 ------------- heroku ---------------------------------------
 actualizar app
@@ -135,9 +136,8 @@ q(uit) to leave the debugger and shut down Rails
     Capybara
        save_and_open_page - abre a página html
 
-Cucumber
+Cucumbe
 
-bundle exec rake cucumber
 bundle exec cucumber
 bundle exec cucumber features/step_definitions/RegistarProjecto.feature --require features (1 só feature, acrescentar :x – número da linha a partir)
 
@@ -160,4 +160,6 @@ http://codepen.io/chriscoyier/pen/egHEK (tag)
 --------------------autenticação e roles------------------------------------------
 https://github.com/RailsApps/rails-devise-roles
 https://github.com/RailsApps/rails3-devise-rspec-cucumber/blob/master/features/step_definitions/user_steps.rb
------------------a ler----------------------------------------
+-----------------pos----------------------------------------
+listar store procedures 
+

@@ -28,6 +28,8 @@ class RulesiisController < ApplicationController
   # POST /rulesiis.json
   def create
     @rulesii = Rulesii.new(rulesii_params)
+    @company = Company.find(session[:company_id])
+    @rulesii.company_id = @company.id
 
     respond_to do |format|
       if @rulesii.save

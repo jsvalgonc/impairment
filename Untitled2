@@ -1,0 +1,3 @@
+rails generate scaffold Allocation number:decimal priority:decimal ruleTipe:string balcao:string grupo_analise:references 
+
+rails generate migration AddGrupoAnaliseIdToAparties grupo_analise:references 

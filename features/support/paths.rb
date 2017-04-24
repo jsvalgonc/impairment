@@ -4,6 +4,8 @@ module NavigationHelpers
     when /Period Management/ then '/months'
     when /Rules Management/ then '/rulesiis'
     when /Process Management/ then '/months/fase' 
+    when /Clientes/ then '/aparties/index_AI_AC'
+    when /criar Criterio de Alocação/ then '/allocations/new'   
     else
       begin
         page_name =~ /the (.*) page/

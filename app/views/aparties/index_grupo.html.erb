@@ -2,7 +2,7 @@
 <p></p>
 
 <h1>Clientes</h1>
-<h2>Em Alocação</h2>
+<h2>Grupo de Analise</h2>
 <table>
   <thead>
     <tr>
@@ -13,7 +13,7 @@
     </tr>
   </thead>
   <tbody>
-    <% @aparties.where(aasm_state: 'em_alocacao').each do |aparty| %>      
+    <% @aparties.each do |aparty| %>      
       <tr>
         <td><%= aparty.PartyDescription %></td>
         <td><%= aparty.PartyReference %></td>

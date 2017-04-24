@@ -6,6 +6,12 @@ class ApartiesController < ApplicationController
   def index
     @aparties = Aparty.all
   end
+  
+  def index_AI_AC
+    @month = Month.find(session[:month_id])
+    @company = Company.find(session[:company_id])
+    @aparties = Aparty.where(company_id:  @company.id,  month_id:  @month.id).all
+  end
 
   # GET /aparties/1
   # GET /aparties/1.json

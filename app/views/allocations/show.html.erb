@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Number:</strong>
+  <%= @allocation.number %>
+</p>
+
+<p>
+  <strong>Priority:</strong>
+  <%= @allocation.priority %>
+</p>
+
+<p>
+  <strong>Ruletipe:</strong>
+  <%= @allocation.ruleTipe %>
+</p>
+
+<p>
+  <strong>Balcao:</strong>
+  <%= @allocation.balcao %>
+</p>
+
+<p>
+  <strong>Grupo analise:</strong>
+  <%= @allocation.grupo_analise %>
+</p>
+
+<%= link_to 'Edit', edit_allocation_path(@allocation) %> |
+<%= link_to 'Back', allocations_path %>

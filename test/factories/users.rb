@@ -7,7 +7,10 @@ FactoryGirl.define do
     password "password"
     role :process_manager
   end  
+  
+  factory :user_analista,  class: User do
+    email "jose.analista@teste.com" 
+    password "password"
+  end
 
-  
-  
 end

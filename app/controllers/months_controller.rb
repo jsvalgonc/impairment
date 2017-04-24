@@ -75,7 +75,9 @@ class MonthsController < ApplicationController
           if valida_company_month("parties") then 
             redirect_to root_url, notice: "Ficheiros de Contrapartes Importado"
             @month.import_parties_status = :imported_parties
-            @month.validar_importacao  
+            if @month.todos_ficheiros_importados? then 
+              @month.ficheiros_importados
+            end
             @month.save
           else
             redirect_to root_url, notice: "Data ou Empresa inválidas"
@@ -85,7 +87,10 @@ class MonthsController < ApplicationController
           if valida_company_month("contracts") then
             redirect_to root_url, notice: "Ficheiros de Contratos Importado"
             @month.import_loans_status = :imported_loans
-            @month.validar_importacao 
+            if @month.todos_ficheiros_importados? then
+              byebug
+              @month.ficheiros_importados
+            end
             @month.save
           else
             redirect_to root_url, notice: "Data ou Empresa inválidas"
@@ -95,7 +100,9 @@ class MonthsController < ApplicationController
           if valida_company_month("mitigants") then
             redirect_to root_url, notice: "Ficheiros de Mitigantes Importado"
             @month.import_mitigants_status = :imported_mitigants
-            @month.validar_importacao 
+            if @month.todos_ficheiros_importados? then
+              @month.ficheiros_importados
+            end
             @month.save
           else
             redirect_to root_url, notice: "Data ou Empresa inválidas"
@@ -120,9 +127,21 @@ class MonthsController < ApplicationController
   def proxima_fase 
     @month = Month.find(params[:format])
     case @month.aasm_state
-    when 'dados_importados'
-      Acontract.aplicar_regras(@month)
+    when 'dados_transferidos'
+      #Acontract.aplicar_regras(@month)
+      Aparty.aplicar_regras(@month)
       @month.evento_aplic_regras
+      @month.save
+      redirect_to fase_path, notice: "Fase Alterada" 
+    when 'dados_importados'
+      transfere_para_tabelas_analise
+      @month.transferir_dados_analise
+      @month.save
+      redirect_to fase_path, notice: "Fase Alterada" 
+    when 'ac_ai_separados'
+      #assignação dos grupos de analise
+      Aparty.assigna_grupos(@month)
+      @month.evento_assigna_grupos
       @month.save
       redirect_to fase_path, notice: "Fase Alterada" 
     else
@@ -166,4 +185,13 @@ class MonthsController < ApplicationController
         return true
       end
     end
+    
+    def transfere_para_tabelas_analise()
+      @month = Month.find(session[:month_id])
+      @company = Company.find(session[:company_id])
+      ActiveRecord::Base.connection.execute("select insert_mitigants(" +(@month.id).to_s + "," + (@company.id).to_s + ")")
+      ActiveRecord::Base.connection.execute("select insert_contracts(" +(@month.id).to_s + "," + (@company.id).to_s + ")")
+      ActiveRecord::Base.connection.execute("select insert_parties(" +(@month.id).to_s + "," + (@company.id).to_s + ")")     
+    end
+    
 end

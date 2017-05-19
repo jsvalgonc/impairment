@@ -1,11 +1,11 @@
 class Aparty < ActiveRecord::Base
   include AASM
   enum aiselected: [:nao_dividido, :analise_individual , :analise_colectiva ]
-
+  belongs_to :grupo_analise
 
   aasm do
     state :em_alocacao, :initial => true
-    state :em_analise, :em_aprovacao, :em_validacao, :concluido
+    state :alocado, :em_analise, :em_aprovacao, :em_validacao, :concluido
 
     #event :ficheiros_importados do
     #  transitions :from => :inicio, :to => :dados_importados

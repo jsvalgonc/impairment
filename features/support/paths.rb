@@ -5,6 +5,7 @@ module NavigationHelpers
     when /Rules Management/ then '/rulesiis'
     when /Process Management/ then '/months/fase' 
     when /Clientes/ then '/aparties/index_AI_AC'
+    when /Gestao de Pool/ then '/aparties/gestao_pool'  
     when /criar Criterio de Alocação/ then '/allocations/new'   
     else
       begin

@@ -1,0 +1,55 @@
+<div class="tab">
+  <button class="tablinks" pasta='Questionários'>Questionários</button>
+  <button class="tablinks" pasta='Património'>Património</button>
+  <button class="tablinks" pasta='Colaterais'>Colaterais</button>
+  <button class="tablinks" pasta='Análises'>Análises</button>
+  <button class="tablinks" pasta='Comentários'>Comentários</button>
+</div>
+
+<div id="Questionários" class="tabcontent">
+  <h3>Questionários</h3>
+
+
+  <table>
+  <thead>
+    <tr>
+      <th>Pergunta</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @answers.each do |answer| %>      
+      <tr>
+        <td><%= answer.id %></td>
+        <td><%= answer.question.question %></td>
+        <td>
+        <%= check_box_tag "answer_ids[]",answer.id =%>  
+        <%= radio_button "answer","answer","sim" %>
+        <%= radio_button "answer","answer","não" %>
+        <%= radio_button "answer","answer","N.S." %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+</div>
+
+
+<div id="Património" class="tabcontent">
+  <h3>Património</h3>
+</div>
+
+<div id="Colaterais" class="tabcontent">
+  <h3>Colaterais</h3>
+</div>
+
+<div id="Análises" class="tabcontent">
+  <h3>Análises</h3>
+</div>
+
+<div id="Comentários" class="tabcontent">
+  <h3>Comentários</h3>
+</div>

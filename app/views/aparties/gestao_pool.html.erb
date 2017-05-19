@@ -1,0 +1,36 @@
+<p id="notice"><%= notice %></p>
+<p></p>
+
+<h1>Clientes</h1>
+<h2>Em Alocação</h2>
+<table>
+  <thead>
+    <tr>
+      <th>Entidade</th>
+      <th>Referencia</th>
+      <th>Balcao</th>
+      <th>Status</th>
+      <th colspan="4"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @aparties.where(aasm_state: 'em_alocacao').each do |aparty| %>      
+      <tr id=<%= aparty.id %>>
+        <td><%= aparty.PartyDescription %></td>
+        <td><%= aparty.PartyReference %></td>
+        <td><%= aparty.Balcao %></td>
+        <td><%= aparty.aasm_state %></td>
+       <td class="combo_user_id" aparty_id="<%= aparty.id %>">
+      <%= if (aparty.user_id == nil) then 
+        select( :aparty, :user_id, User.all.collect { |u| [u.email, u.id] }, {  :prompt => "Please Select" }) 
+      else
+        select( :aparty, :user_id, User.all.collect { |u| [u.email, u.id] }, { :selected => aparty.user_id  }) 
+      end %>
+      </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+

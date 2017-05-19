@@ -1,10 +1,17 @@
 Rails.application.routes.draw do
+  resources :answers
+  resources :answers
+  resources :questions
   resources :allocations
   resources :grupo_analises
   resources :companies
   resources :amitigants
   resources :acontracts
   get 'aparties/index_AI_AC' => 'aparties#index_AI_AC'
+  get 'aparties/grupo_analise' => 'aparties#grupo_analise'
+  get 'aparties/gestao_pool' => 'aparties#gestao_pool'
+  get 'aparties/analise/:id' => 'aparties#analise'
+  post 'aparties/gestao_pool_update' => 'aparties#gestao_pool_update'
   resources :aparties
   resources :contracts
   resources :rulesiis

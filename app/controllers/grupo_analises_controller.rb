@@ -68,7 +68,7 @@ class GrupoAnalisesController < ApplicationController
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
-    def grupo_analise_params
-      params.require(:grupo_analise).permit(:title, :description)
+    def grupo_analise_params                                          
+      params.require(:grupo_analise).permit(:title, :description, :user_id )
     end
 end

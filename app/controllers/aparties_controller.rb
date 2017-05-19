@@ -12,6 +12,42 @@ class ApartiesController < ApplicationController
     @company = Company.find(session[:company_id])
     @aparties = Aparty.where(company_id:  @company.id,  month_id:  @month.id).all
   end
+  
+  def grupo_analise
+    @month = Month.find(session[:month_id])
+    @company = Company.find(session[:company_id])
+    @aparties = Aparty.where(company_id:  @company.id,  month_id:  @month.id, aasm_state: :em_alocacao).all
+  end
+
+  def gestao_pool
+    #byebug
+    @month = Month.find(session[:month_id])
+    @company = Company.find(session[:company_id])
+    #@aparties = Aparty.joins(:grupo_analise).where(:grupo_analises => {:user_id => current_user.id }).where(company_id:  @company.id,  month_id:  @month.id, aasm_state: :em_alocacao, user_id: :user_id).all
+    @aparties = Aparty.joins(:grupo_analise).where(:grupo_analises => {:user_id => current_user.id }).where(company_id:  @company.id,  month_id:  @month.id, aasm_state: :em_alocacao).all
+    #Score.joins(:submission).where(:submissions => {:task_id => 1})
+    #@aparties = Aparty.where(company_id:  @company.id,  month_id:  @month.id, aasm_state: :em_alocacao).all
+  end
+  
+  def gestao_pool_update
+    js_aparty_id=params["js_aparty_id"]
+    js_aparty_selected = params["js_aparty_selected"]
+    @aparty = Aparty.find(js_aparty_id)
+    @aparty.user_id = js_aparty_selected
+    @aparty.save
+
+  end
+
+  def analise 
+    #Vai buscar o mês e a empresa
+    @month = Month.find(session[:month_id])
+    @month_for = @month.month.strftime("%Y-%m-%d")
+    @company_id = session[:company_id]
+    # Questionário - Vai buscar os registos de respostas de todas as perguntas para party no periodo
+    #BalanceSheetDate = 1
+    #holding_party_reference=1
+    @answers = Answer.where(month: @month_for, company_id: @company_id, aparty_id: params[:id] )
+  end
 
   # GET /aparties/1
   # GET /aparties/1.json
@@ -75,6 +111,6 @@ class ApartiesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def aparty_params
-      params.require(:aparty).permit(:BalanceSheetDate, :HoldingPartyReference, :PartyReference, :PartyDescription, :NIF, :ActivitySector, :CountryCode, :SectorialCode, :PartyType, :Balcao, :ZipCode, :CodigoVigilanciaEspecial, :PartyGroupReference, :TotalGroupExposure, :TotalPartyExposure, :BPN_OverdueCredit, :BPN_ReturnedCheques, :BPN_OverdueCreditOther, :BPN_BdPDefault, :BPN_OverdueCreditBPNOther, :NPLTeam, :NPLTeamLeader, :AssetManager, :LegalManager)
+      params.require(:aparty).permit(:BalanceSheetDate, :HoldingPartyReference, :PartyReference, :PartyDescription, :NIF, :ActivitySector, :CountryCode, :SectorialCode, :PartyType, :Balcao, :ZipCode, :CodigoVigilanciaEspecial, :PartyGroupReference, :TotalGroupExposure, :TotalPartyExposure, :BPN_OverdueCredit, :BPN_ReturnedCheques, :BPN_OverdueCreditOther, :BPN_BdPDefault, :BPN_OverdueCreditBPNOther, :NPLTeam, :NPLTeamLeader, :AssetManager, :LegalManager, :user_id)
     end
 end

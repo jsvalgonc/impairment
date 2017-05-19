@@ -21,7 +21,6 @@ end
 #Given(/^I am authenticated as "([^"]*)"$/) do |user|
 #Given(/^I am authenticated as Analista01$/) do
 Given(/^I am authenticated as "(.*?)"$/) do |user|
-  byebug
   if user == "analista"
     @user = User.where("email=? ","jose.analista@teste.com").first
     @user.password = "password"

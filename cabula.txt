@@ -42,7 +42,6 @@ Criar uma tabela de ligação: rails generate scaffold IngredientsRecipes recipe
 
 Apaga um campo: rails generate migration RemoveFieldNameFromTableName field_name:datatype
 
-
 Quando fica parado:spring stop
 
 Apagar um campo numa tabela
@@ -67,7 +66,7 @@ sudo sudo -u postgres psql
 \df . store procedures (functions)
 \l - bases de dados
 \q - sair
-
+importar - COPY questions FROM '/home/ubuntu/workspace/test/questoes.csv' DELIMITER ',' CSV;
 
 -----------Gems------------------------------
 
@@ -92,7 +91,7 @@ criar remote - git remote add pd4mealplanner https://github.com/jsvalgonc/PD4.gi
 
 adicionar ficheiros - git add --all (-f)
 commit - git commit -m 'added new files' (colocar o nome da versão)
-push - git push https://github.com/jsvalgonc/pd4mealplanner.git (ou /peer_to_peer.git) master
+push - git push https://github.com/jsvalgonc/impairment.git master
 
 ------------- heroku ---------------------------------------
 actualizar app

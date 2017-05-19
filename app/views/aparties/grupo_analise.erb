@@ -1,0 +1,28 @@
+<p id="notice"><%= notice %></p>
+<p></p>
+<h1>Clientes</h1>
+<h2>Alocação de Analistas</h2>
+<table>
+  <thead>
+    <tr>
+      <th>Entidade</th>
+      <th>Referencia</th>
+      <th>Balcao</th>
+      <th>Analista</th>
+      <th colspan="1"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @aparties.each do |aparty| %>      
+      <tr>
+        <td><%= aparty.PartyDescription %></td>
+        <td><%= aparty.PartyReference %></td>
+        <td><%= aparty.Balcao %></td>
+        <td><%= select("post", "user_id", User.all.map { |u| [u.email, u.id] }, { :prompt => "Please Select" }) %></td>
+        <td><%= aparty.aasm_state %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<br>
+

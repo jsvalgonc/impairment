@@ -10,5 +10,10 @@
   <%= @grupo_analise.description %>
 </p>
 
+<p>
+  <strong>User ID:</strong>
+  <%= @grupo_analise.user.email %>
+</p>
+
 <%= link_to 'Edit', edit_grupo_analise_path(@grupo_analise) %> |
 <%= link_to 'Back', grupo_analises_path %>

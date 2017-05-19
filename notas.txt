@@ -1,2 +1,12 @@
 DB
 Utilizador: db_superuser
+
+                select("post", "person_id", Person.all.collect {|p| [ p.name, p.id ] }, { include_blank: true })
+        <td><%= select ("post", "user_id", User.all.map { |u| [u.email, u.id] } , { :prompt => "Please Select" }) %></td>
+        
+        
+rails generate scaffold Allocation number:decimal priority:decimal ruleTipe:string balcao:string grupo_analise:references 
+
+rails generate migration AddGrupoAnaliseIdToAparties grupo_analise:references 
+
+rails generate scaffold  Answers BalanceSheetDate:date, ContractPortfolio:text, aparty_id:integer, question_id:integer, answer:integer 

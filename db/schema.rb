@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170422225821) do
+ActiveRecord::Schema.define(version: 20170518170354) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -118,6 +118,17 @@ ActiveRecord::Schema.define(version: 20170422225821) do
   add_index "amitigants", ["BalanceSheetDate", "HoldingPartyReference", "ContractReference", "MitigantReference"], name: "index_amitigants_primary_key", using: :btree
   add_index "amitigants", ["acontract_id"], name: "index_amitigants_on_acontract_id", using: :btree
 
+  create_table "answers", force: :cascade do |t|
+    t.integer  "aparty_id"
+    t.integer  "question_id"
+    t.integer  "answer"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.integer  "answer_type"
+    t.integer  "company_id"
+    t.text     "month"
+  end
+
   create_table "aparties", force: :cascade do |t|
     t.date     "BalanceSheetDate"
     t.string   "HoldingPartyReference"
@@ -150,12 +161,14 @@ ActiveRecord::Schema.define(version: 20170422225821) do
     t.integer  "company_id"
     t.integer  "month_id"
     t.integer  "grupo_analise_id"
+    t.integer  "user_id"
   end
 
   add_index "aparties", ["BalanceSheetDate", "HoldingPartyReference", "PartyReference"], name: "index_aparties_primary_key", using: :btree
   add_index "aparties", ["company_id"], name: "index_aparties_on_company_id", using: :btree
   add_index "aparties", ["grupo_analise_id"], name: "index_aparties_on_grupo_analise_id", using: :btree
   add_index "aparties", ["month_id"], name: "index_aparties_on_month_id", using: :btree
+  add_index "aparties", ["user_id"], name: "index_aparties_on_user_id", using: :btree
 
   create_table "companies", force: :cascade do |t|
     t.string   "CompanyCode"
@@ -317,6 +330,14 @@ ActiveRecord::Schema.define(version: 20170422225821) do
 
   add_index "parties", ["BalanceSheetDate", "HoldingPartyReference", "PartyReference"], name: "index_parties_primary_key", using: :btree
 
+  create_table "questions", force: :cascade do |t|
+    t.integer  "version"
+    t.text     "question"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.integer  "answer_type"
+  end
+
   create_table "rulesiis", force: :cascade do |t|
     t.decimal  "number"
     t.decimal  "priority"
@@ -361,6 +382,7 @@ ActiveRecord::Schema.define(version: 20170422225821) do
   add_foreign_key "aparties", "companies"
   add_foreign_key "aparties", "grupo_analises"
   add_foreign_key "aparties", "months"
+  add_foreign_key "aparties", "users"
   add_foreign_key "contracts", "parties"
   add_foreign_key "grupo_analises", "users"
   add_foreign_key "months", "companies"
